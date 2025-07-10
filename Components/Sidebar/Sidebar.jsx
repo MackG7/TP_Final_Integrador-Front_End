@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router'
 import { MessengerContext } from '../../Context/MessengerContext'
 import ContactList from '../ContactList/ContactList'
 import '../Sidebar/Sidebar.css'
-import { BsFilter } from "react-icons/bs";
-import { PiNotePencilLight } from "react-icons/pi";
+import Icons from '../../src/assets/Icons';
 
 function Sidebar() {
     const { contacts, setActiveContact } = useContext(MessengerContext)
@@ -26,8 +25,8 @@ function Sidebar() {
             <div className="sidebar-header">
                 <h2>Wsp-messenger </h2>
                 <div className='wspIcons'>
-                    <div><PiNotePencilLight size={25} /> </div>
-                    <div><BsFilter size={25} /> </div>
+                    <div><Icons.NotePencil size={25} /> </div>
+                    <div><Icons.Filter size={25} /> </div>
                 </div>
             </div>
             <ContactList contacts={contacts} onContactClick={handleContactClick} />
