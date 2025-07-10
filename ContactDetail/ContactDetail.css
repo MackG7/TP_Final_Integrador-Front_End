@@ -1,0 +1,35 @@
+.contact-detail {
+    padding: 1rem;
+    font-family: sans-serif;
+}
+
+.contact-detail-img {
+    width: 150px;
+    border-radius: 50%;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.contact-detail h2 {
+    margin-bottom: 0.5rem;
+}
+
+.contact-detail p {
+    margin: 0.25rem 0;
+}
+
+.back-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #1558a0;
+}
+

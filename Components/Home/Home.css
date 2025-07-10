@@ -1,0 +1,82 @@
+.home-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.empty-chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.welcome-message h1 {
+    color: var(--primary-color);
+    margin-bottom: 16px;
+    font-size: 2rem;
+}
+
+.welcome-message p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+.app.dark .welcome-message p {
+    color: var(--text-dark);
+}
+
+.mobile-view-message {
+    display: none;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+    }
+
+    .empty-chat {
+        display: none;
+    }
+
+    .mobile-view-message {
+        display: block;
+        padding: 20px;
+        text-align: center;
+        background-color: var(--background-light);
+        color: var(--text-light);
+    }
+
+    .app.dark .mobile-view-message {
+        background-color: var(--background-dark);
+        color: var(--text-dark);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .welcome-message h1 {
+        font-size: 1.8rem;
+    }
+
+    .welcome-message p {
+        font-size: 1rem;
+    }
+}
+
+.wsplogo {
+    height: 180px;
+}
+
+@media (min-width: 2000px) {
+    .welcome-message h1 {
+        font-size: 3rem;
+    }
+
+    .welcome-message p {
+        font-size: 1.8rem;
+    }
+}
