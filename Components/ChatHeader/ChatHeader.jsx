@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router'
 import './ChatHeader.css'
+import Icons from '../../src/assets/Icons'
 
 function ChatHeader({ contact, onProfileClick }) {
     const navigate = useNavigate()
@@ -16,6 +17,7 @@ function ChatHeader({ contact, onProfileClick }) {
     return (
         <div className="chat-header">
             <button onClick={handleBackClick} className="back-button" aria-label="Volver a contactos">
+                <Icons.Returnarrow />
             </button>
 
             <Link to={`/contactInfo/${contact.id}`}>

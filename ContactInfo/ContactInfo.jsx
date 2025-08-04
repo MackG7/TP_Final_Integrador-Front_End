@@ -21,7 +21,7 @@ function ContactInfo() {
 
             <div className="contact-info-header">
                 <button className="back-button" onClick={() => navigate(`/chat/${contact.id}`)}>
-                    ←
+                    <Icons.Returnarrow />
                 </button>
                 <img src={contact.img} alt={contact.name} className="contact-info-img" />
                 <h2 className="contact-info-name">{contact.name}</h2>

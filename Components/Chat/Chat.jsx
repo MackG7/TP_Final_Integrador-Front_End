@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { MessengerContext } from '../../Context/MessengerContext';
 import ChatHeader from '../ChatHeader/ChatHeader';
@@ -9,7 +9,7 @@ import '../Chat/Chat.css';
 
 function Chat() {
     const { contactId } = useParams();
-    const { contacts, markAsRead } = useContext(MessengerContext);
+    const { contacts } = useContext(MessengerContext);
     const navigate = useNavigate();
 
     const contact = contacts.find(c => c.id === parseInt(contactId));
@@ -20,10 +20,12 @@ function Chat() {
 
     return (
         <div className="chat-container">
-            <ChatHeader
-                contact={contact}
-                onProfileClick={() => navigate(`/contactInfo/${contact.id}`)}
-            />
+            <div className="chat-navigation">
+                <ChatHeader
+                    contact={contact}
+                    onProfileClick={() => navigate(`/contactInfo/${contact.id}`)}
+                />
+            </div>
             <div className="messages-container">
                 {contact.messages.map(message => (
                     <Message

@@ -10,6 +10,7 @@ import { PiProhibitThin } from "react-icons/pi";
 import { FaWhatsapp } from "react-icons/fa";
 import { BsFilter } from "react-icons/bs";
 import { PiNotePencilLight } from "react-icons/pi";
+import { IoArrowUndoOutline } from "react-icons/io5";
 
 const Icons = {
     Call : IoMdCall,
@@ -23,7 +24,8 @@ const Icons = {
     Prohibit : PiProhibitThin,
     Whatsapp : FaWhatsapp,
     Filter : BsFilter,
-    NotePencil : PiNotePencilLight
+    NotePencil : PiNotePencilLight,
+    Returnarrow : IoArrowUndoOutline,
 }
 
 
