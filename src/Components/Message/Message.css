@@ -1,0 +1,75 @@
+.message {
+    display: flex;
+    margin: 10px;
+    max-width: 70%;
+}
+
+.message-sender {
+    font-weight: bold;
+    color: #34b7f1;
+    /* azul tipo WhatsApp */
+    margin-bottom: 2px;
+    font-size: 0.85em;
+}
+
+.message-text {
+    margin: 0;
+}
+
+.own-message {
+    align-self: flex-end;
+    justify-content: flex-end;
+}
+
+.other-message {
+    align-self: flex-start;
+    justify-content: flex-start;
+}
+
+.message-content {
+    background-color: #e0f7fa;
+    color: #004d40;
+    padding: 10px 15px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+}
+
+.own-message .message-content {
+    background-color: #dcf8c6;
+    color: #2e7d32;
+    border-top-right-radius: 0;
+}
+
+.other-message .message-content {
+    background-color: #ffffff;
+    color: #333;
+    border-top-left-radius: 0;
+}
+
+.message-meta {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.message-time {
+    color: #666;
+}
+
+.message-status {
+    font-weight: bold;
+}
+
+.message-status.visto {
+    color: #4caf50;
+
+}
+
+.message-status.no-visto {
+    color: #888;
+
+}

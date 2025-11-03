@@ -11,6 +11,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { BsFilter } from "react-icons/bs";
 import { PiNotePencilLight } from "react-icons/pi";
 import { IoArrowUndoOutline } from "react-icons/io5";
+import { FaUserGroup } from "react-icons/fa6";
 
 const Icons = {
     Call : IoMdCall,
@@ -26,6 +27,7 @@ const Icons = {
     Filter : BsFilter,
     NotePencil : PiNotePencilLight,
     Returnarrow : IoArrowUndoOutline,
+    Group : FaUserGroup
 }
 
 
