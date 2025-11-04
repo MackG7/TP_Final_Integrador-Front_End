@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { MessengerContext } from "../../Context/MessengerContext.jsx";
+import { MessengerContext } from "../../Context/MessengerContext/MessengerContext.jsx";
 import ContactList from "../ContactList/ContactList.jsx";
 import Icons from "../../assets/Icons.jsx";
 import "./Sidebar.css";

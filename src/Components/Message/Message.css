@@ -1,75 +1,81 @@
-.message {
+/* ====== BURBUJAS DE MENSAJE ====== */
+.message-bubble {
     display: flex;
-    margin: 10px;
+    flex-direction: column;
+    margin: 8px;
     max-width: 70%;
-}
-
-.message-sender {
-    font-weight: bold;
-    color: #34b7f1;
-    /* azul tipo WhatsApp */
-    margin-bottom: 2px;
-    font-size: 0.85em;
-}
-
-.message-text {
-    margin: 0;
-}
-
-.own-message {
-    align-self: flex-end;
-    justify-content: flex-end;
-}
-
-.other-message {
-    align-self: flex-start;
-    justify-content: flex-start;
-}
-
-.message-content {
-    background-color: #e0f7fa;
-    color: #004d40;
-    padding: 10px 15px;
-    border-radius: 15px;
-    position: relative;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 12px;
     word-wrap: break-word;
 }
 
-.own-message .message-content {
+/* Burbuja del propio usuario */
+.own {
+    align-self: flex-end;
     background-color: #dcf8c6;
-    color: #2e7d32;
-    border-top-right-radius: 0;
 }
 
-.other-message .message-content {
+/* Burbuja de otros usuarios */
+.received {
+    align-self: flex-start;
     background-color: #ffffff;
-    color: #333;
-    border-top-left-radius: 0;
 }
 
-.message-meta {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-    font-size: 12px;
-    margin-top: 5px;
+/* Nombre del remitente */
+.message-sender {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 4px;
 }
 
+/* Contenido del mensaje */
+.message-content {
+    margin: 0;
+}
+
+/* Hora del mensaje */
 .message-time {
-    color: #666;
+    font-size: 0.75rem;
+    color: #777;
+    text-align: right;
+    margin-top: 4px;
 }
 
-.message-status {
-    font-weight: bold;
+/* ====== CAMPO DE ENTRADA DE MENSAJES ====== */
+.message-input-form {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background: #fff;
+    align-items: center;
+    gap: 8px;
 }
 
-.message-status.visto {
-    color: #4caf50;
-
+.message-input-field {
+    flex: 1;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px;
+    outline: none;
 }
 
-.message-status.no-visto {
-    color: #888;
+.message-send-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
 
+.message-send-button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.message-send-button:hover:not(:disabled) {
+    background-color: #0056b3;
 }

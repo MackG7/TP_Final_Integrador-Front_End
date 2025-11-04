@@ -3,11 +3,11 @@ import { CONTENT_TYPE_VALUES, HEADERS, HTTP_METHODS } from "../constants/htpps.j
 
 class GroupService {
     constructor() {
-        // ✅ Ruta relativa para que Vite use el proxy
+        //  Ruta relativa para que Vite use el proxy
         this.baseURL = "/api/group";
     }
 
-    // 🔹 Obtener lista de grupos
+    //  Obtener lista de grupos
     async getGroupList() {
         try {
             const token = authService.getToken();
@@ -29,12 +29,12 @@ class GroupService {
 
             return response_data;
         } catch (error) {
-            console.error("❌ ERROR en getGroupList:", error.message);
+            console.error(" ERROR en getGroupList:", error.message);
             throw error;
         }
     }
 
-    // 🔹 Crear grupo
+    //  Crear grupo
     async createGroup(name, url_img = "") {
         try {
             if (!name || name.trim() === "") throw new Error("El nombre del grupo es requerido");
@@ -62,12 +62,12 @@ class GroupService {
 
             return response_data;
         } catch (error) {
-            console.error("❌ ERROR en createGroup:", error.message);
+            console.error(" ERROR en createGroup:", error.message);
             throw error;
         }
     }
 
-    // 🔹 Obtener grupo por ID
+    // Obtener grupo por ID
     async getGroupById(group_id) {
         try {
             if (!group_id) throw new Error("ID del grupo es requerido");
@@ -91,7 +91,7 @@ class GroupService {
 
             return response_data;
         } catch (error) {
-            console.error("❌ ERROR en getGroupById:", error.message);
+            console.error(" ERROR en getGroupById:", error.message);
             throw error;
         }
     }
@@ -125,7 +125,7 @@ class GroupService {
 
             return response_data;
         } catch (error) {
-            console.error("❌ ERROR en inviteUser:", error.message);
+            console.error(" ERROR en inviteUser:", error.message);
             throw error;
         }
     }
@@ -156,7 +156,7 @@ class GroupService {
 
             return response_data;
         } catch (error) {
-            console.error("❌ ERROR en updateGroup:", error.message);
+            console.error(" ERROR en updateGroup:", error.message);
             throw error;
         }
     }
@@ -185,7 +185,7 @@ class GroupService {
 
             return response_data;
         } catch (error) {
-            console.error("❌ ERROR en deleteGroup:", error.message);
+            console.error(" ERROR en deleteGroup:", error.message);
             throw error;
         }
     }
@@ -214,16 +214,14 @@ class GroupService {
 
             return response_data;
         } catch (error) {
-            console.error("❌ ERROR en getGroupMembers:", error.message);
+            console.error(" ERROR en getGroupMembers:", error.message);
             throw error;
         }
     }
 }
 
-// ✅ Singleton
 const groupService = new GroupService();
 
-// ✅ Export funciones individuales
 export const getGroupList = () => groupService.getGroupList();
 export const createGroup = (name, url_img = "") => groupService.createGroup(name, url_img);
 export const getGroupById = (group_id) => groupService.getGroupById(group_id);

@@ -1,71 +1,111 @@
-import { useParams, useLocation, useNavigate } from 'react-router'
-import { useContext } from 'react'
-import { MessengerContext } from '../../Context/MessengerContext.jsx'
-import ChatHeader from '../ChatHeader/ChatHeader'
-import Message from '../Message/Message.jsx'
-import MessageInput from '../../MessageInput/MessageInput.jsx'
-import './Chat.css'
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { MessengerContext } from "../../Context/MessengerContext/MessengerContext.jsx";
+import { MessageBubble, MessageInput } from "../Message/MessageComponents.jsx";
+import LogoutButton from "../../Components/LogoutButton/LogoutButton.jsx";
 
-function Chat() {
-    const { contactId, groupId } = useParams()
-    const { contacts, groups } = useContext(MessengerContext)
-    const navigate = useNavigate()
-    const location = useLocation()
+export default function Chat() {
+    const { userId } = useParams();
+    const navigate = useNavigate();
+    const {
+        user,
+        messages,
+        setMessages,
+        sendUserMessage,
+        getUserMessages,
+    } = useContext(MessengerContext);
 
-    // Detectar si la ruta es de grupo o contacto
-    const isGroupChat = location.pathname.includes('/group/')
-    const chatData = isGroupChat
-        ? groups.find(g => g.id === groupId)
-        : contacts.find(c => c.id === parseInt(contactId))
+    const [contact, setContact] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [sending, setSending] = useState(false);
+    const messagesEndRef = useRef(null);
 
-    if (!chatData) {
-        return <div>Selecciona un chat o grupo</div>
-    }
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+    useEffect(scrollToBottom, [messages]);
 
-    const handleProfileClick = () => {
-        if (isGroupChat) {
-            // Redirigir a la info del grupo (a crear)
-            navigate(`/groupInfo/${chatData.id}`)
-        } else {
-            navigate(`/contactInfo/${chatData.id}`)
+    useEffect(() => {
+        const loadChat = async () => {
+            if (!userId) return;
+            setLoading(true);
+            try {
+                const result = await getUserMessages(userId);
+                if (result?.success) setMessages(result.data || []);
+            } catch (err) {
+                console.error("Error cargando chat:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+        loadChat();
+    }, [userId, getUserMessages, setMessages]);
+
+    const handleSendMessage = async (text) => {
+        if (!text.trim()) return;
+        setSending(true);
+        try {
+            const result = await sendUserMessage(userId, text);
+            if (result.success) {
+                const newMsg = {
+                    _id: Date.now().toString(),
+                    content: text,
+                    sender: user,
+                    receiver: userId,
+                    timestamp: new Date().toISOString(),
+                };
+                setMessages((prev) => [...prev, newMsg]);
+            }
+        } catch (err) {
+            console.error("Error enviando mensaje:", err);
+        } finally {
+            setSending(false);
         }
-    }
+    };
+
+    if (loading) return <div className="chat-screen">Cargando chat...</div>;
 
     return (
-        <div className="chat-container">
-            <div className="chat-navigation">
-                <ChatHeader
-                    contact={chatData}
-                    onProfileClick={handleProfileClick}
-                />
+        <div className="chat-screen">
+            <div className="chat-header">
+                <button onClick={() => navigate(-1)} className="back-button">←</button>
+                <div className="contact-info">
+                    <div className="contact-avatar">
+                        {contact?.name?.[0] || "U"}
+                    </div>
+                    <div className="contact-details">
+                        <h3>{contact?.name || "Usuario"}</h3>
+                        <span className="contact-status">En línea</span>
+                    </div>
+                </div>
+                <LogoutButton />
             </div>
 
             <div className="messages-container">
-                {chatData.messages.map(message => (
-                    <Message
-                        key={message.id}
-                        message={message}
-                        isOwn={message.emisor === 'YO'}
-                        isGroupChat={isGroupChat} // 👈 nuevo
-                    />
-                ))}
+                {messages.length === 0 ? (
+                    <div className="no-messages">
+                        <p>No hay mensajes aún</p>
+                        <span>Envía un mensaje para iniciar la conversación</span>
+                    </div>
+                ) : (
+                    messages.map((msg) => (
+                        <MessageBubble
+                            key={msg._id}
+                            message={msg.content}
+                            isOwn={msg.sender?._id === user?.id}
+                            sender={msg.sender}
+                            timestamp={msg.timestamp}
+                        />
+                    ))
+                )}
+                <div ref={messagesEndRef} />
             </div>
 
-            {/* 
-        🔹 MessageInput se adapta:
-        Si es grupo => enviar a grupo
-        Si es contacto => enviar normal
-      */}
             <MessageInput
-                contactId={!isGroupChat ? chatData.id : null}
-                groupId={isGroupChat ? chatData.id : null}
-                isGroupChat={isGroupChat}
+                onSendMessage={handleSendMessage}
+                disabled={sending}
+                placeholder="Escribe un mensaje..."
             />
         </div>
-    )
+    );
 }
-
-export default Chat
-
-
-

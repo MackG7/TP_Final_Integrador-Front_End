@@ -1,240 +1,41 @@
-.contact-list {
-    flex: 1;
-    overflow-y: auto;
-    background-color: var(--sidebar-light);
+.contact-detail-container {
+    padding: 20px;
+    text-align: center;
 }
 
-.app.dark .contact-list {
-    background-color: var(--sidebar-dark);
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    padding: 12px 15px;
+.back-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    border-bottom: 1px solid var(--border-light);
-    position: relative;
+    margin-bottom: 15px;
 }
 
-.app.dark .contact-item {
-    border-bottom-color: var(--border-dark);
-}
-
-.contact-item:hover {
-    background-color: var(--item-hover-light);
-}
-
-.app.dark .contact-item:hover {
-    background-color: var(--item-hover-dark);
-}
-
-.contact-item.active {
-    background-color: var(--item-active-light);
-}
-
-.app.dark .contact-item.active {
-    background-color: var(--item-active-dark);
-}
-
-.contact-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 15px;
-    border: 2px solid var(--avatar-border-light);
-}
-
-.app.dark .contact-avatar {
-    border-color: var(--avatar-border-dark);
-}
-
-.contact-info {
-    flex: 1;
-    min-width: 0;
-
-}
-
-.contact-info h3 {
-    margin: 0 0 4px 0;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--text-light);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.app.dark .contact-info h3 {
-    color: var(--text-dark);
-}
-
-.last-message {
-    margin: 0;
-    font-size: 0.9rem;
-    color: var(--text-secondary-light);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.app.dark .last-message {
-    color: var(--text-secondary-dark);
-}
-
-.contact-meta {
+.profile-section {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    margin-left: 10px;
-}
-
-.last-time {
-    font-size: 0.8rem;
-    color: var(--text-secondary-light);
-    margin-bottom: 5px;
-}
-
-.app.dark .last-time {
-    color: var(--text-secondary-dark);
-}
-
-.unread-count {
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    font-weight: bold;
 }
 
-.unread-marker {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 40px;
-    background-color: var(--primary-color);
-    border-radius: 0 4px 4px 0;
+.contact-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
 }
 
-.search-input {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 1rem;
-    border: none;
-    border-bottom: 1px solid var(--border-light);
-    background-color: var(--sidebar-light);
-    color: var(--text-light);
-    outline: none;
+.contact-status {
+    color: gray;
+    margin-top: 5px;
 }
 
-.app.dark .search-input {
-    background-color: var(--sidebar-dark);
-    color: var(--text-dark);
-    border-bottom: 1px solid var(--border-dark);
+.info-section {
+    margin-top: 20px;
+    text-align: left;
 }
 
-
-.new-message .contact-info h3,
-.new-message .last-message {
-    font-weight: bold;
-}
-
-.contact-link {
-    text-decoration: none;
-    color: inherit;
-}
-
-
-.contact-list::-webkit-scrollbar {
-    width: 6px;
-}
-
-.contact-list::-webkit-scrollbar-track {
-    background: var(--scrollbar-track-light);
-}
-
-.app.dark .contact-list::-webkit-scrollbar-track {
-    background: var(--scrollbar-track-dark);
-}
-
-.contact-list::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-thumb-light);
-    border-radius: 3px;
-}
-
-.app.dark .contact-list::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-thumb-dark);
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .contact-item {
-        padding: 10px 12px;
-    }
-
-    .contact-avatar {
-        width: 45px;
-        height: 45px;
-        margin-right: 12px;
-    }
-
-    .contact-info h3 {
-        font-size: 1rem;
-    }
-
-    .last-message {
-        font-size: 0.8rem;
-    }
-
-    .unread-count {
-        width: 18px;
-        height: 18px;
-        font-size: 0.6rem;
-    }
-}
-
-@media (min-width: 2000px) {
-    .contact-item {
-        padding: 20px 25px;
-    }
-
-    .contact-avatar {
-        width: 70px;
-        height: 70px;
-        margin-right: 20px;
-    }
-
-    .contact-info h3 {
-        font-size: 1.5rem;
-        margin-bottom: 8px;
-    }
-
-    .last-message {
-        font-size: 1.2rem;
-    }
-
-    .last-time {
-        font-size: 1rem;
-    }
-
-    .unread-count {
-        width: 28px;
-        height: 28px;
-        font-size: 1rem;
-    }
-
-    .unread-marker {
-        width: 6px;
-        height: 60px;
-    }
-
+.info-section p {
+    margin: 8px 0;
 }

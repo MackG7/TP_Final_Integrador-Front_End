@@ -38,7 +38,7 @@ export const clearStorage = () => {
     }
 };
 
-// ✅ Exportación por defecto (opcional, para compatibilidad)
+// Exportación por defecto (opcional, para compatibilidad)
 const LocalStorage = {
     LOCAL_STORAGE_KEYS,
     getFromStorage,

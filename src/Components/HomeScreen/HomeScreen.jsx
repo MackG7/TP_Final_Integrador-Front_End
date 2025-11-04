@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { Link } from 'react-router' 
-import { MessengerContext } from '../../Context/MessengerContext.jsx'
+import { MessengerContext } from '../../Context/MessengerContext/MessengerContext.jsx'
 import Sidebar from '../Sidebar/Sidebar.jsx'
 import './HomeScreen.css'
 import Icons from '../../assets/Icons.jsx'

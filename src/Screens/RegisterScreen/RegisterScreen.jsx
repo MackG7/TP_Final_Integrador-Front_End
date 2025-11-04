@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { MessengerContext } from '../../Context/MessengerContext.jsx'
+import { MessengerContext } from '../../Context/MessengerContext/MessengerContext.jsx'
 import './RegisterScreen.css'
 
 const FORM_FIELDS = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessengerContext } from '../MessengerContext.jsx';
+import { MessengerContext } from '../MessengerContext/MessengerContext.jsx';
 import { useAuth } from '../hooks/useAuth.jsx';
 import { useMessages } from '../hooks/useMessages.jsx';
 import { useGroups } from '../hooks/useGroups.jsx';

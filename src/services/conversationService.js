@@ -1,7 +1,7 @@
 import api from '../services/apiService.js';
 
 class ConversationService {
-    // 💬 OBTENER CONVERSACIONES
+    // OBTENER CONVERSACIONES
     async getConversations() {
         try {
             const response = await api.get ('/conversations');
@@ -31,7 +31,7 @@ class ConversationService {
         }
     }
 
-    // 🗑️ ELIMINAR CONVERSACIÓN
+    //  ELIMINAR CONVERSACIÓN
     async deleteConversation(conversationId) {
         try {
             const response = await api.delete(`/conversations/${conversationId}`);

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar.jsx";
-import { MessengerContext } from "../../Context/MessengerContext.jsx";
+import { MessengerContext } from "../../Context/MessengerContext/MessengerContext.jsx";
 import { getGroupList } from "../../services/groupService.js";
 import { useNavigate } from "react-router-dom";
 

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { MessengerContext } from '../src/Context/MessengerContext.jsx'
+import { MessengerContext } from '../src/Context/MessengerContext/MessengerContext.jsx'
 
 // Importar componentes
 import LoginScreen from '../src/Screens/LoginScreen/LoginScreen.jsx'
@@ -9,14 +9,15 @@ import HomeScreen from '../src/Components/HomeScreen/HomeScreen.jsx'
 import CreateGroupScreen from '../src/Components/CreateGroup/CreateGroup.jsx'
 import GroupsScreen from "./Screens/GroupScreen/GroupsScreen.jsx"
 import GroupPageScreen from './Screens/GroupScreen/GroupPageScreen.jsx'
-import ContactDetail from '../src/ContactDetail/ContactDetail.jsx'
+import Chat from "../src/Components/Chat/Chat.jsx";
+
 
 // Componente de ruta protegida
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, loading } = useContext(MessengerContext)
+  const { user, loading } = useContext(MessengerContext)
 
   if (loading) return <div>Cargando...</div>
-  if (!isAuthenticated) return <Navigate to="/login" replace />
+  if (!user) return <Navigate to="/login" replace />
 
   return children
 }
@@ -30,17 +31,25 @@ function App() {
         <Route path="/register" element={<RegisterScreen />} />
 
         {/* Rutas protegidas */}
-        <Route path="/home" element={
-          <ProtectedRoute>
-            <HomeScreen />
-          </ProtectedRoute>
-        } />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomeScreen />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/home" element={
-          <ProtectedRoute>
-            <GroupsScreen />
-          </ProtectedRoute>
-        } />
+        <Route
+          path="/groups"
+          element={
+            <ProtectedRoute>
+              <GroupsScreen />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="/chat/contact/userId" element={<Chat />} />
 
         <Route path="/create-group" element={
           <ProtectedRoute>
@@ -52,15 +61,6 @@ function App() {
             <GroupPageScreen />
           </ProtectedRoute>
         } />
-
-        <Route
-          path="/chat/contact/:id"
-          element={
-            <ProtectedRoute>
-              <ContactDetail /> 
-            </ProtectedRoute>
-          }
-        />
 
         {/* Ruta por defecto */}
         <Route path="/" element={<Navigate to="/home" replace />} />

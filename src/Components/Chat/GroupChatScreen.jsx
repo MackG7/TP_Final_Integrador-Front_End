@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MessengerContext } from '../../Context/MessengerContext.jsx';
+import { MessengerContext } from '../../Context/MessengerContext/MessengerContext.jsx';
 import MessageBubble from '../Chat/MessageBubble/MessageBubble.jsx';
 import MessageInput from '../../MessageInput/MessageInput.jsx';
 import './GroupChatScreen';
